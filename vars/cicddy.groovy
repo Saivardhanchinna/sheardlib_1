@@ -13,3 +13,10 @@ def deployment(jobname,ip)
 scp /var/lib/jenkins/workspace/${jobname}/Helloworld.java ubuntu@${ip}:/home/ubuntu/demo1
 """
 }
+def testing(jobname)
+{
+sh """
+    javac /var/lib/jenkins/workspace/${jobname}/Helloworld.java
+    java -cp /var/lib/jenkins/workspace/${jobname} Helloworld > /var/lib/jenkins/workspace/${jobname}/test_output.txt
+"""
+}
